@@ -26,10 +26,13 @@ target 'AwesomeTSProject' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
+  pod "RNAsyncStorage"
+
   target 'AwesomeTSProjectTests' do
     inherit! :complete
     # Pods for testing
   end
+  
 
   post_install do |installer|
     react_native_post_install(
