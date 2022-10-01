@@ -1,4 +1,4 @@
-import {useContext} from 'react';
+import { useContext } from 'react';
 import {
   Image,
   StyleSheet,
@@ -8,24 +8,36 @@ import {
   Linking,
   SafeAreaView
 } from 'react-native';
-import {AirbnbRating} from 'react-native-ratings';
-import {DetailsScreenProps} from '../App';
-import {ThemeContext} from '../providers/ThemeProvider';
+import { AirbnbRating } from 'react-native-ratings';
+import { DetailsScreenProps } from '../App';
+import { ThemeContext } from '../providers/ThemeProvider';
 
-export const ShowDetailsScreen : React.FC<DetailsScreenProps> = ({route}: DetailsScreenProps) : JSX.Element=> {
+export const ShowDetailsScreen: React.FC<DetailsScreenProps> = ({ route }: DetailsScreenProps): JSX.Element => {
   const theme = useContext(ThemeContext);
-  const {image, name, language, genres, officialSite, rating} =
+  const { image, name, language, genres, officialSite, rating } =
     route?.params || {};
   const style = StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: theme.background,
       alignItems: 'center',
-      padding: 5,
+    },
+    imageContainer: {
+      marginTop: 5,
+      shadowColor: "#505050",
+      shadowOffset: {
+        width: 0,
+        height: 5,
+      },
+      shadowOpacity: 0.3,
+      shadowRadius: 6.0,
+      
+      elevation: 10,
     },
     img: {
       height: 300,
       width: 300,
+      
     },
     details: {
       margin: 10,
@@ -60,11 +72,14 @@ export const ShowDetailsScreen : React.FC<DetailsScreenProps> = ({route}: Detail
   });
   return (
     <SafeAreaView style={style.container}>
-      <Image
-        style={style.img}
-        source={{uri: image?.medium}}
-        resizeMode="contain"
-      />
+      <View style={style.imageContainer}>
+        <Image
+          style={style.img}
+          source={{ uri: image?.medium }}
+          resizeMode="contain"
+        />
+      </View>
+
       <View style={style.details}>
         <Text style={style.title}>{name}</Text>
         {genres && genres.length > 0 && (

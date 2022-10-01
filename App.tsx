@@ -7,7 +7,6 @@ import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { ShowItem } from './components/show-list-item';
 import { ConnectionView } from './ConnectionView';
 import { Platform } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 type RootStackParamList = {
   Home: undefined;
