@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import {
   VirtualizedList,
   StyleSheet,
@@ -7,17 +7,19 @@ import {
   View,
   ActivityIndicator,
 } from 'react-native';
-import {ThemeContext} from '../providers/ThemeProvider';
-import {ShowListItem} from './show-list-item';
-import {useResources} from '../useResources';
+import { ThemeContext } from '../providers/ThemeProvider';
+import { ShowListItem } from './show-list-item';
+import { useResources } from '../useResources';
 
-export const ShowList = ({query}: {query: string}) => {
+export const ShowList = ({ query }: { query: string }) => {
   const theme = useContext(ThemeContext);
-  const {resource: showList, loading} = useResources(query);
+  const { resource: showList, loading } = useResources(query);
   const style = StyleSheet.create({
     container: {
       width: '100%',
       marginTop: 2.5,
+      flex: 1,
+      flexGrow: 1
     },
     listItem: {
       flexDirection: 'row',
@@ -45,14 +47,14 @@ export const ShowList = ({query}: {query: string}) => {
 
   const getItem = (data: Array<any>, index: number) => data[index];
   return (
+    
     <KeyboardAvoidingView style={style.container}>
       {loading ? (
         <View
           style={{
             flexGrow: 1,
             alignItems: 'center',
-            justifyContent: 'center',
-            height: '100%',
+            justifyContent: 'center'
           }}>
           <ActivityIndicator size="large" color={theme.primary} />
         </View>
@@ -62,7 +64,7 @@ export const ShowList = ({query}: {query: string}) => {
           keyExtractor={item => item.show?.id}
           getItemCount={() => showList.length}
           getItem={getItem}
-          renderItem={({item}) => (
+          renderItem={({ item }) => (
             <ShowListItem
               item={item.show}
               style={style.listItem}

@@ -1,6 +1,6 @@
-import {TextInput, StyleSheet, View, Button} from 'react-native';
-import React, {useContext} from 'react';
-import {ThemeContext} from '../providers/ThemeProvider';
+import { TextInput, StyleSheet, View, Button } from 'react-native';
+import React, { useContext } from 'react';
+import { ThemeContext } from '../providers/ThemeProvider';
 
 export const SearchText = ({
   onSearchPressed,
@@ -17,6 +17,7 @@ export const SearchText = ({
       padding: 5,
       alignItems: 'center',
       borderRadius: 10,
+      marginTop: 5
     },
     text: {
       flex: 2,

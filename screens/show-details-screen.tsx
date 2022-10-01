@@ -7,11 +7,12 @@ import {
   TouchableOpacity,
   Linking,
 } from 'react-native';
-import {Rating, AirbnbRating} from 'react-native-ratings';
+import {AirbnbRating} from 'react-native-ratings';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import {DetailsScreenProps} from '../App';
 import {ThemeContext} from '../providers/ThemeProvider';
 
-export const ShowDetails = ({route}: DetailsScreenProps) => {
+export const ShowDetailsScreen : React.FC<DetailsScreenProps> = ({route}: DetailsScreenProps) : JSX.Element=> {
   const theme = useContext(ThemeContext);
   const {image, name, language, genres, officialSite, rating} =
     route?.params || {};

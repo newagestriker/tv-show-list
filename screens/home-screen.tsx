@@ -1,14 +1,15 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { ThemeContext } from "../providers/ThemeProvider";
 import { StyleSheet, Platform, View, StatusBar } from "react-native";
-import { SearchText } from "./search-view";
-import { ShowList } from "./show-list";
+import { SearchText } from "../components/search-view";
+import { ShowList } from "../components/show-list";
 import { useState } from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-export const MainContainer:React.FC = () => {
+export const HomeSceen: React.FC = (): JSX.Element => {
   const theme = useContext(ThemeContext);
   const [query, setQuery] = useState("");
-  const searchShows = (text:string) => {
+  const searchShows = (text: string) => {
     setQuery(text);
   };
   const styles = StyleSheet.create({
@@ -18,14 +19,12 @@ export const MainContainer:React.FC = () => {
       alignItems: "center",
       justifyContent: "center",
       color: theme.onBackground,
-      paddingTop: Platform.OS === "android" ? 35 : 0,
-      paddingBottom: Platform.OS === "android" ? 30 : 0,
     },
   });
   return (
     <View style={styles.container}>
       <SearchText onSearchPressed={searchShows} />
-      <ShowList query={query}  />
+      {query && <ShowList query={query} />}
       <StatusBar />
     </View>
   );

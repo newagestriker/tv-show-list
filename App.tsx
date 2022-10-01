@@ -1,11 +1,13 @@
-import {MainContainer} from './components/main-container';
-import {defaultTheme, ThemeProvider} from './providers/ThemeProvider';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {ShowDetails} from './components/show-details';
-import type {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {ShowItem} from './components/show-list-item';
-import {ConnectionView} from './ConnectionView';
+import { HomeSceen } from './screens/home-screen';
+import { defaultTheme, ThemeProvider } from './providers/ThemeProvider';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { ShowDetailsScreen } from './screens/show-details-screen';
+import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { ShowItem } from './components/show-list-item';
+import { ConnectionView } from './ConnectionView';
+import { Platform } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 type RootStackParamList = {
   Home: undefined;
@@ -25,16 +27,17 @@ export default function App() {
         <Stack.Navigator>
           <Stack.Screen
             name="Home"
-            component={MainContainer}
-            options={{headerShown: false}}
+            component={HomeSceen}
+            options={{ headerShown: Platform.OS === "ios", title: "Shows" }}
           />
           <Stack.Screen
             name="Details"
-            component={ShowDetails}
-            options={{headerShown: false}}
+            component={ShowDetailsScreen}
+            options={({ route }) => ({ headerShown: Platform.OS === "ios", title: route.params.name })}
           />
         </Stack.Navigator>
       </NavigationContainer>
+
     </ThemeProvider>
   );
 }
