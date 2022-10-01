@@ -6,9 +6,9 @@ import {
   View,
   TouchableOpacity,
   Linking,
+  SafeAreaView
 } from 'react-native';
 import {AirbnbRating} from 'react-native-ratings';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import {DetailsScreenProps} from '../App';
 import {ThemeContext} from '../providers/ThemeProvider';
 
@@ -59,7 +59,7 @@ export const ShowDetailsScreen : React.FC<DetailsScreenProps> = ({route}: Detail
     },
   });
   return (
-    <View style={style.container}>
+    <SafeAreaView style={style.container}>
       <Image
         style={style.img}
         source={{uri: image?.medium}}
@@ -84,6 +84,6 @@ export const ShowDetailsScreen : React.FC<DetailsScreenProps> = ({route}: Detail
           />
         )}
       </View>
-    </View>
+    </SafeAreaView>
   );
 };

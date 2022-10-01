@@ -1,10 +1,9 @@
 import React, { useContext } from "react";
 import { ThemeContext } from "../providers/ThemeProvider";
-import { StyleSheet, Platform, View, StatusBar } from "react-native";
+import { StyleSheet, SafeAreaView, StatusBar } from "react-native";
 import { SearchText } from "../components/search-view";
 import { ShowList } from "../components/show-list";
 import { useState } from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 export const HomeSceen: React.FC = (): JSX.Element => {
   const theme = useContext(ThemeContext);
@@ -22,10 +21,10 @@ export const HomeSceen: React.FC = (): JSX.Element => {
     },
   });
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <SearchText onSearchPressed={searchShows} />
       {query && <ShowList query={query} />}
       <StatusBar />
-    </View>
+    </SafeAreaView>
   );
 };
