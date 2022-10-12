@@ -5,7 +5,7 @@ import { SearchText } from "../components/search-view";
 import { ShowList } from "../components/show-list";
 import { useState } from "react";
 
-export const HomeSceen: React.FC = (): JSX.Element => {
+export const HomeSceen = (): JSX.Element => {
   const theme = useContext(ThemeContext);
   const [query, setQuery] = useState("");
   const searchShows = (text: string) => {
