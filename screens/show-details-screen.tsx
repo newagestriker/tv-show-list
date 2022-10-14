@@ -9,10 +9,10 @@ import {
   SafeAreaView
 } from 'react-native';
 import { AirbnbRating } from 'react-native-ratings';
-import { DetailsScreenProps } from '../App';
+import {CustomScreenProps } from '../App';
 import { ThemeContext } from '../providers/ThemeProvider';
 
-export const ShowDetailsScreen: React.FC<DetailsScreenProps> = ({ route }: DetailsScreenProps): JSX.Element => {
+export const ShowDetailsScreen: React.FC<CustomScreenProps> = ({ route }: CustomScreenProps): JSX.Element => {
   const theme = useContext(ThemeContext);
   const { image, name, language, genres, officialSite, rating } =
     route?.params || {};

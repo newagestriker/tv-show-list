@@ -1,5 +1,5 @@
 import {Image, View, Text, TouchableOpacity} from 'react-native';
-import {DetailsScreenProps} from '../App';
+import {CustomScreenProps} from '../App';
 import {useNavigation} from '@react-navigation/native';
 
 type ShowListItemProps = {
@@ -24,7 +24,7 @@ export const ShowListItem: React.FC<ShowListItemProps> = ({
   imgStyle,
   textStyle,
 }: ShowListItemProps) => {
-  const navigation = useNavigation<DetailsScreenProps['navigation']>();
+  const navigation = useNavigation<CustomScreenProps['navigation']>();
   return (
     <TouchableOpacity onPress={() => navigation.navigate('Details', item)}>
       <View style={style}>

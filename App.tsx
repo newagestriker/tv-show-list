@@ -8,17 +8,19 @@ import {ShowItem} from './components/show-list-item';
 import {ConnectionView} from './ConnectionView';
 import {Platform} from 'react-native';
 import {LoginScreen} from './screens/login-screen';
+import {LogoutScreen} from './screens/logout-screen';
 
 type RootStackParamList = {
   Login: undefined;
   Home: undefined;
   Details: ShowItem;
+  Logout: undefined;
 };
-export type DetailsScreenProps = NativeStackScreenProps<
+export type CustomScreenProps = NativeStackScreenProps<
   RootStackParamList,
-  'Details',
-  'Show'
+  'Details'
 >;
+
 export default function App() {
   const Stack = createNativeStackNavigator<RootStackParamList>();
   return (
@@ -35,6 +37,11 @@ export default function App() {
             name="Home"
             component={HomeSceen}
             options={{headerShown: Platform.OS === 'ios', title: 'Shows'}}
+          />
+          <Stack.Screen
+            name="Logout"
+            component={LogoutScreen}
+            options={{headerShown: Platform.OS === 'ios', title: 'Logout'}}
           />
           <Stack.Screen
             name="Details"
